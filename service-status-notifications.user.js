@@ -2,8 +2,9 @@
 // @name         Utility: Service Status Notifications
 // @namespace    http://github.com/tidusx18
 // @version      0.0.1
-// @description  Pushes native desktop alert if an issue is found with Canvas, Honorlock, Pearson, Turnitin, or Zoom. Checks their respective service status pages once per hour.
+// @description  Pushes native desktop alert if an issue is found with Canvas, Honorlock, Pearson, Turnitin, or Zoom. Checks their respective service status pages once every 30 minutes.
 // @author       Daniel Victoriano <victoriano518@gmail.com>
+// @updateURL    https://github.com/tidusx18/service-status-notifications/raw/master/service-status-notifications.user.js
 // @match        *://*/*
 // @connect      status.instructure.com
 // @connect      status.honorlock.com
