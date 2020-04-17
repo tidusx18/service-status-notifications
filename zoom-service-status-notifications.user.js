@@ -1,16 +1,12 @@
 // ==UserScript==
-// @name         Utility: Service Status Notifications
+// @name         Utility: Zoom Status Notifications
 // @namespace    http://github.com/tidusx18
 // @version      0.0.1
 // @description  Pushes native desktop alert if an issue is found with Zoom. Checks Zoom's service status pages once every 30 minutes.
 // @author       Daniel Victoriano <victoriano518@gmail.com>
-// @updateURL
+// @updateURL    https://github.com/tidusx18/service-status-notifications/raw/master/zoom-service-status-notifications.user.js
 // @match        *://*/*
-// @connect      status.instructure.com
-// @connect      status.honorlock.com
-// @connect      turnitin.statuspage.io
 // @connect      status.zoom.us
-// @connect      ecollege-prod.apigee.net
 // @run-at       default
 // @noframes
 // @grant        GM_notification
