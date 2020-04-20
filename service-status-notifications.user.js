@@ -14,7 +14,6 @@
 // @run-at       default
 // @noframes
 // @grant        GM_notification
-// @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
 (function() {
@@ -29,15 +28,13 @@
             'https://status.zoom.us/api/v2/status.json'
         ]
 
-        function notification(name) {
-            dispatchNotification = () => {
-                GM_notification({
-                    text: `Issue Detected with ${name}!`,
-                    title: name,
-                    highlight: false,
-                    timeout: 10000 // time is in milliseconds (1000 == 1 second)
-                })
-            }
+        let dispatchNotification = (name) => {
+            GM_notification({
+                text: `Issue Detected with ${name}!`,
+                title: name,
+                highlight: false,
+                timeout: 10000 // time is in milliseconds (1000 == 1 second)
+            })
         }
 
         services.forEach(service => {
@@ -52,7 +49,7 @@
                             .then(res => {
                                 res.products.forEach(product => {
                                     if (product.status) {
-                                        notification(product.name)
+                                        dispatchNotification(product.name)
                                     }
 
                                     else { console.log(`${product.name}: All Systems Operational`) }
@@ -64,7 +61,7 @@
                     else {
                         res.status.description == 'All Systems Operational' ?
                             console.log(`${res.page.name}: All Systems Operational`) :
-                            notification(res.page.name)
+                            dispatchNotification(res.page.name)
                     }
                 })
         })

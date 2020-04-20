@@ -17,25 +17,22 @@
 
     setInterval(() => {
 
-        function notification(name) {
-            dispatchNotification = () => {
-                GM_notification({
-                    text: `Issue Detected with Zoom!`,
-                    title: name,
-                    highlight: false,
-                    timeout: 10000 // time is in milliseconds (1000 == 1 second)
-                })
-            }
+        let dispatchNotification = (name) => {
+            GM_notification({
+                text: `Issue Detected with ${name}!`,
+                title: name,
+                highlight: false,
+                timeout: 10000 // time is in milliseconds (1000 == 1 second)
+            })
         }
 
-            fetch('https://status.zoom.us/api/v2/status.json')
-                .then(res => res.json())
-                .then(res => {
-
-                        res.status.description == 'All Systems Operational' ?
-                            console.log(`Zoom: All Systems Operational`) :
-                            notification('Zoom')
-                })
+        fetch('https://status.zoom.us/api/v2/status.json')
+            .then(res => res.json())
+            .then(res => {
+                res.status.description == 'All Systems Operational' ?
+                    console.log(`Zoom: All Systems Operational`) :
+                    dispatchNotification('Zoom')
+            })
     }, 1800000)
 
 })();
